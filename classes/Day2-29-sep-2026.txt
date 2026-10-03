@@ -1,0 +1,81 @@
+Agenda:
+1. Download software/tools
+Ganache - local block chain
+https://archive.trufflesuite.com/ganache/
+
+Metamask chrome extension
+
+https://metamask.io/download
+
+Install Truffle
+
+node.js - serverside javascript run time
+environment
+
+download node.js for windows
+https://nodejs.org/en/download
+windows installer (.msi)
+lab2secure
+
+
+Web technology
+html,css,javascript
+java script in browser
+
+programfiles/nodejs
+node executable
+npm - node package manager
+npx - node package manager executable
+
+check whether node is installed and path is set
+open command prompt
+type node
+
+if it say this command is not found
+
+you have to set the path
+
+type edit in windows search
+
+system environment
+path - add the folder path where
+node is installed
+
+go to command prompt
+type node
+execute valid java script commands
+
+truffle
+
+Running java script programs using node
+
+create programs/jsprograms folder
+open them in vs code
+open command prompt or terminal
+code .
+
+
+Usecase
+
+Create a Student Contract. This contract should be able to save student results
+We can capture student name,rolenumber,course,year,semester,cgpa
+
+Application
+
+Front end : React.js
+Back end : Solidity
+ABI
+
+Create a contract for safe keeping of
+patient information in a hospital
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+# Node.js dependencies, including nested projects
+**/node_modules/
+
+# Build and test output
+build/
+dist/
+coverage/
+
+# Solidity tooling output
+artifacts/
+cache/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Operating system files
+.DS_Store
+Thumbs.db

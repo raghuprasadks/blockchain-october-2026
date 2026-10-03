@@ -1,0 +1,25 @@
+Introduction to block chain - visual way
+https://www.youtube.com/watch?v=_160oMzblY8
+https://andersbrownworth.com/blockchain/
+
+https://www.youtube.com/watch?v=xIDL_akeras
+https://andersbrownworth.com/blockchain/public-private-keys/
+
+https://docs.web3js.org/
+https://ethereum.org/web3/
+
+
+Web3 Commands:
+
+npm init -y
+npm pkg set type=module
+npm install ethers web3
+
+npm list ethers web3
+
+node --check AsyncAwait.js
+
+npm init -y (y means y with default answers)
+
+for metamask
+npx --yes http-server . -p 5500

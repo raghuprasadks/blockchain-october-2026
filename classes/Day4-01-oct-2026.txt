@@ -1,0 +1,128 @@
+Agenda:
+1. Recap
+2. Continuation of Web Programming
+3. Java Script
+Objects
+Regular functions
+Arrow functions
+Arrays
+Array functions
+
+Hands on session
+Open jsprograms folder from visual studio code
+browse jsprograms folder using file explorer
+open in command prompt
+cmd
+
+add one more attribute supplier to the product function
+and create object accordingly and add to cart
+Write following functions in product
+searchbysupplier(name)
+this should return the products supplied by the supplier
+searchbyprice(minprice,maxprice)
+this should return the products with are between
+minprice and maxprice
+
+
+
+Asynchronous
+
+synchronous - Request - Response
+number of requests processed per unit time
+
+callback
+
+queue
+
+node.js
+asynchronous 
+non blocking
+
+web1
+web2 - centralized
+Web3 - block chain - decentralized
+
+
+1. node.js
+
+create web3demo folder
+open web3demo folder from visual studio code
+
+open terminal
+
+npm init -y
+npm pkg set type=module
+
+npm install ethers
+npm install web3
+
+npm list ethers web3
+
+React
+
+javascript
+
+jquery
+
+html is static
+
+React
+Angular
+
+Front End
+html,css,js,ajax
+
+React
+
+To create react application
+Step 1: create reactdemo folder
+Step 2 : open reactdemo in vs code
+Step 3 : One terminal or in command prompt
+npx create-react-app myreactapp
+
+cd myreactapp
+npm start
+
+
+component based architecture
+Single Page Application (SPA)
+
+
+npx create-react-app <appname>
+
+
+signup
+login
+logout
+profile
+search
+
+Block chain based project ideas
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4. API's
+Web Service
+5. Introduction to React.js
+6. Introduction  to Web3
+7. Web3 programs
+8. Project ideas

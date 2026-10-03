@@ -1,0 +1,86 @@
+1.Introduction to Blockchain
+2.Block chain simulation 
+https://andersbrownworth.com/blockchain/
+
+3. Solidity
+contract creation/management
+
+4.remix Ethereum
+5. Remix IDE
+6. Sign up
+7.Executed HelloWorld.sol program
+8. https://solidity-by-example.org/
+
+
+// SPDX-License-Identifier: MIT
+// compiler version must be greater than or equal to 0.8.26 and less than 0.9.0
+pragma solidity ^0.8.26;
+
+contract HelloWorld {
+    string public greet = "Hello World!";
+}
+
+
+9.Assignment
+
+MathsCalculator
+
+add(n1,n2)
+return n1+n2
+
+multiply(n1,n2)
+return n1*n2
+subtraction(n1,n2)
+division(n1,n2)
+
+10. Assignment
+ElectricityBillCalculator
+
+
+based on units consumed
+
+units <=100 then price per unit is 1 INR
+units >100 <=200 then price per unit is 2 INR
+units >200 <=300 then price per unit is 3 INR
+units>300 then price per unit is 5 INR
+
+genereratebill(units)
+return the bill amount
+
+
+11. ArrayAssignment
+
+1.Create an array of marks to store 10 students marks 
+2. Capture the values of array elements
+3. Display array elements
+4. Find maximum value
+5. Find minimum value
+6. Modify an array element
+7. Delete an array  element
+
+12. Structure
+
+Create a Student Structure
+with following information
+rolenum
+name
+course
+semester
+cgpa
+
+Carryout following actions
+1. Add new student
+2. List all students
+3. Modify cgpa for a particular student using rolenum
+4. Delete a specific student
+
+
+
+
+
+
+
+
+
+
+

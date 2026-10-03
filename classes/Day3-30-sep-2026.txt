@@ -1,0 +1,102 @@
+Agenda:
+1. Recap
+2. Deploying contract on Ganache
+Steps:
+a. Open Ganache
+b. Create New Workspace
+c. Give workspace name as 
+nhc-blockchaindeployment-demo
+d. Click on Start
+e. In remix give following prompt
+
+create a SimpleMathCalculator contract.Write functions  to add,subtract,multiply and divide
+
+deploy on remix and see whether it runs
+
+to deploy on Ganache
+
+in remix select London instead of Osaka
+
+3. Deploying on freely available testnet
+
+I want to deploy this contract on Sepolia testnet using metamask. how to configure
+
+https://sepolia-faucet.pk910.de/
+
+https://sepolia.etherscan.io/
+
+4. Front End Development
+
+
+Create a Simple Maths Calculator using
+html,css and java Script
+
+use visual studio code
+add live server extension
+
+
+front end
+back end
+
+webservice
+
+aadhar
+aadhar server
+passport
+
+AJAX - Asynchronous Java Script and XML
+
+fullstack developer
+
+server side - API - Application Programming Interface
+
+JSON - Java Script Object Notion
+
+student={
+rollno:1,
+name:"ravi",
+course:"BCA",
+semester:5
+}
+
+students=[
+{
+rollno:1,
+name:"ravi",
+course:"BCA",
+semester:5
+},
+{
+rollno:2,
+name:"ravi",
+course:"BCA",
+semester:5
+},
+{
+rollno:3,
+name:"ravi",
+course:"BCA",
+semester:5
+},
+
+]
+
+free fake webservice
+
+jsonplaceholdertypicode
+
+Java script object
+
+
+
+
+
+
+
+
+
+
+
+
+
+

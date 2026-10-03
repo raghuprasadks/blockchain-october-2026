@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MetaMask Wallet Balance</title>
+    <style>
+      body {
+        max-width: 640px;
+        margin: 64px auto;
+        padding: 0 24px;
+        color: #202124;
+        font-family: system-ui, sans-serif;
+      }
+
+      button {
+        margin-right: 8px;
+        padding: 10px 16px;
+        border: 0;
+        border-radius: 4px;
+        background: #f6851b;
+        color: #171717;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        cursor: wait;
+        opacity: 0.65;
+      }
+
+      dd {
+        overflow-wrap: anywhere;
+      }
+
+      #status {
+        min-height: 1.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>MetaMask Wallet Balance</h1>
+    <p>Connect your wallet to read its native ETH balance on the selected network.</p>
+
+    <button id="connect-button" type="button">Connect wallet</button>
+    <button id="refresh-button" type="button" disabled>Refresh balance</button>
+    <p id="status" role="status" aria-live="polite">Wallet not connected.</p>
+
+    <dl>
+      <dt>Account</dt>
+      <dd id="account">Not connected</dd>
+      <dt>Chain ID</dt>
+      <dd id="chain-id">Not connected</dd>
+      <dt>Balance</dt>
+      <dd id="balance">Not available</dd>
+    </dl>
+
+    <script>
+      const connectButton = document.getElementById("connect-button");
+      const refreshButton = document.getElementById("refresh-button");
+      const status = document.getElementById("status");
+      const accountOutput = document.getElementById("account");
+      const chainIdOutput = document.getElementById("chain-id");
+      const balanceOutput = document.getElementById("balance");
+      const weiPerEther = 10n ** 18n;
+
+      let connectedAccount = null;
+
+      function formatWeiAsEther(wei) {
+        const whole = wei / weiPerEther;
+        const fraction = (wei % weiPerEther)
+          .toString()
+          .padStart(18, "0")
+          .slice(0, 6)
+          .replace(/0+$/, "");
+
+        return fraction ? `${whole}.${fraction}` : whole.toString();
+      }
+
+      async function refreshBalance() {
+        if (!window.ethereum || !connectedAccount) {
+          return;
+        }
+
+        refreshButton.disabled = true;
+        status.textContent = "Reading balance...";
+
+        try {
+          const chainId = await window.ethereum.request({ method: "eth_chainId" });
+          const balanceHex = await window.ethereum.request({
+            method: "eth_getBalance",
+            params: [connectedAccount, "latest"],
+          });
+
+          chainIdOutput.textContent = `${chainId} (decimal ${Number.parseInt(chainId, 16)})`;
+          balanceOutput.textContent = `${formatWeiAsEther(BigInt(balanceHex))} ETH`;
+          status.textContent = "Balance updated.";
+        } catch (error) {
+          status.textContent = `Could not read balance: ${error.message}`;
+        } finally {
+          refreshButton.disabled = false;
+        }
+      }
+
+      async function connectWallet() {
+        if (!window.ethereum) {
+          status.textContent = "MetaMask was not found. Install or enable the browser extension, then reload this page.";
+          return;
+        }
+
+        connectButton.disabled = true;
+        status.textContent = "Waiting for wallet approval...";
+
+        try {
+          const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+          connectedAccount = accounts[0] ?? null;
+          accountOutput.textContent = connectedAccount ?? "Not connected";
+          refreshButton.disabled = !connectedAccount;
+
+          if (connectedAccount) {
+            await refreshBalance();
+          }
+        } catch (error) {
+          status.textContent = error.code === 4001
+            ? "Connection request was rejected in MetaMask."
+            : `Could not connect: ${error.message}`;
+        } finally {
+          connectButton.disabled = false;
+        }
+      }
+
+      connectButton.addEventListener("click", connectWallet);
+      refreshButton.addEventListener("click", refreshBalance);
+
+      if (window.ethereum) {
+        window.ethereum.on("accountsChanged", (accounts) => {
+          connectedAccount = accounts[0] ?? null;
+          accountOutput.textContent = connectedAccount ?? "Not connected";
+          balanceOutput.textContent = "Not available";
+          refreshButton.disabled = !connectedAccount;
+
+          if (connectedAccount) {
+            void refreshBalance();
+          } else {
+            status.textContent = "Wallet disconnected.";
+            chainIdOutput.textContent = "Not connected";
+          }
+        });
+
+        window.ethereum.on("chainChanged", () => {
+          if (connectedAccount) {
+            void refreshBalance();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Object</title>
+</head>
+<body>
+    <p>JavaScript Object Example</p>
+    <script>
+        var person = {
+            firstName: "John",
+            lastName: "Doe",
+            age: 30,
+            fullName: function() {
+                return this.firstName + " " + this.lastName;
+            }
+        };
+        console.log("First Name: " + person.firstName);
+        console.log("Last Name: " + person.lastName);
+        console.log("Age: " + person.age);
+        console.log("Full Name: " + person.fullName());
+    </script>
+</body>
+</html>

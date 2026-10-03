@@ -1,0 +1,1 @@
+console.log("welcome to java script. Running this with node.js")

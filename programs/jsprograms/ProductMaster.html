@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Master</title>
+</head>
+<body>
+    <h1>Product Master</h1>
+    <script>
+        products=[]
+        function Product(code,name, price, quantity) {
+            this.code = code;
+            this.name = name;
+            this.price = price;
+            this.quantity = quantity;
+        }
+        var product1 = new Product("P001", "Laptop", 1000, 5);
+        console.log("Product Code: " + product1.code);
+        console.log("Product Name: " + product1.name);
+        console.log("Product Price: " + product1.price);
+        console.log("Product Quantity: " + product1.quantity);
+        products.push(product1);
+        var product2 = new Product("P002", "Smartphone", 500, 10);
+        products.push(product2);
+        console.log("Product Code: " +products);
+        for (var i = 0; i < products.length; i++) {
+            console.log("Product Code: " + products[i].code);
+            console.log("Product Name: " + products[i].name);
+            console.log("Product Price: " + products[i].price);
+            console.log("Product Quantity: " + products[i].quantity);
+        }
+    </script>
+    
+</body>
+</html>
