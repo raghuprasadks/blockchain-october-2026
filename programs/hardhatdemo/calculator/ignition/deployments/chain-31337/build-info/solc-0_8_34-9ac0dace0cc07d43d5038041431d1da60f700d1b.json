@@ -1,0 +1,49 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_34-9ac0dace0cc07d43d5038041431d1da60f700d1b",
+  "solcVersion": "0.8.34",
+  "solcLongVersion": "0.8.34+commit.80d5c536",
+  "compilerType": "solc",
+  "toolVersions": {
+    "hardhat": "3.18.1"
+  },
+  "userSourceNameMap": {
+    "contracts/SimpleMathCalculator.sol": "project/contracts/SimpleMathCalculator.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "osaka",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode.linkReferences",
+            "evm.bytecode.object",
+            "evm.bytecode.opcodes",
+            "evm.bytecode.sourceMap",
+            "evm.deployedBytecode.immutableReferences",
+            "evm.deployedBytecode.linkReferences",
+            "evm.deployedBytecode.object",
+            "evm.deployedBytecode.opcodes",
+            "evm.deployedBytecode.sourceMap",
+            "evm.methodIdentifiers"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/SimpleMathCalculator.sol": {
+        "content": "// SPDX-License-Identifier: UNLICENSED\r\npragma solidity ^0.8.34;\r\n\r\ncontract SimpleMathCalculator {\r\n  uint256 public lastAddResult;\r\n  uint256 public lastMultiplyResult;\r\n\r\n  function add(uint256 a, uint256 b) public returns (uint256) {\r\n    lastAddResult = a + b;\r\n    return lastAddResult;\r\n  }\r\n\r\n  function multiply(uint256 a, uint256 b) public returns (uint256) {\r\n    lastMultiplyResult = a * b;\r\n    return lastMultiplyResult;\r\n  }\r\n}\r\n"
+      }
+    }
+  }
+}

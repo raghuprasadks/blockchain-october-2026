@@ -1,0 +1,119 @@
+Agenda:
+1. Recap
+2. Basics of Front end 
+development using React.js
+3. Creating Blockchain projects
+using hardhat
+4. Creating our own Token (Crypto
+currency)
+5.Project ideas
+
+React.js
+
+1.Create reactdemo folder
+2. Get inside reactdemo folder
+3. open command prompt
+4. Check whether node is installed
+5. node --version
+6. Command to create a react project
+npx create-react-app reactbasics
+7. cd reactbasics
+8. npm start
+9. To open in visual studio code
+code .
+
+www.kaushalya.tech
+click on git link
+click on repositories
+search blockchain-october-2026
+click on this link
+to get course material
+
+
+Connect to co-pilot inside visual studio code
+
+Create a SimpleInterestCalculator.js a functional component inside components folder. 
+I should be able to enter principal,rateofinterest and time. 
+This component should calculate Simple Interest. Same should be displayed
+
+Create SignUp.js a functional component inside components folder
+I should be able to enter name,email,mobile,password and submit
+Submitted information should be stored in a users array
+
+https://www.npmjs.com/
+npm 
+npx
+
+3. Creating Blockchain projects
+using hardhat
+
+https://hardhat.org/docs/getting-started
+
+step 1 - create hardhatdemo folder
+mkdir hardhatdemo
+dir
+step 2 - cd hardhatdemo
+Step 3 - mkdir calculator
+cd calculator
+
+step 4 - Install and create harddhat project
+npm init -y
+npm install --save-dev hardhat
+Initialize Hardhat:
+npx hardhat --init
+
+if you error inside visual studio code in case
+you are not able to run the script
+run following script in windows power shell
+as Adminstrator
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+
+npx hardhat compile
+npx hardhat node
+
+Create a solidity test program to test  Counter.sol
+
+npx hardhat test solidity
+
+npx hardhat test nodejs
+
+Create web interface for Counter.sol
+
+
+0x5FbDB2315678afecb367f032d93F642f64180aa3
+
+
+Commands to deploy
+
+1. Run the local hardhat node in one terminal
+npx hardhat node
+
+copy 19th account 19 private key
+
+2. Open another terminal to deploy the application
+npx hardhat ignition deploy --network localhost ignition/modules/CounterWeb.ts
+
+copy deployed address
+
+3. To run ui
+ npm run ui
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

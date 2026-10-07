@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d211d" />
+    <meta
+      name="description"
+      content="Record and review BCA internal test results on a local blockchain."
+    />
+    <title>BCA Results — Internal assessment register</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="BCA Results home">
+          <span class="brand-mark" aria-hidden="true">B</span>
+          <span>BCA<span class="brand-light">results</span></span>
+        </a>
+        <div class="header-status">
+          <span id="lecturer-label">Wallet not connected</span>
+          <span class="network-pill" id="network-pill">
+            <span class="network-dot" aria-hidden="true"></span>
+            <span id="network-label">Local chain · 31337</span>
+          </span>
+        </div>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow"><span class="eyebrow-line"></span> BCA DEPARTMENT · INTERNAL ASSESSMENT</p>
+        <h1 id="page-title">A clearer record<br /><span>of every result.</span></h1>
+        <p class="intro-copy">
+          Record internal test marks by student, subject, and semester.
+          Each submission is saved as a transaction on your local Hardhat blockchain.
+        </p>
+        <div class="privacy-notice" role="note">
+          <strong>Local demo only:</strong> blockchain records are public and permanent.
+          Use sample data; do not put real student marks on a public network.
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="BCA result register">
+        <section class="panel setup-panel" aria-labelledby="setup-title">
+          <div class="panel-heading">
+            <div>
+              <p class="card-kicker">GET STARTED</p>
+              <h2 id="setup-title">Connect to the register</h2>
+            </div>
+            <span class="panel-icon" aria-hidden="true">01</span>
+          </div>
+
+          <button class="primary-button connect-button" id="connect-button" type="button">
+            <span id="connect-label">Connect lecturer wallet</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+          <p class="wallet-address" id="wallet-address">Connect the account that deployed the register.</p>
+
+          <label class="field-label" for="contract-address">DEPLOYED CONTRACT ADDRESS</label>
+          <div class="address-row">
+            <input
+              class="text-input"
+              id="contract-address"
+              type="text"
+              placeholder="0x…"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button class="secondary-button" id="load-button" type="button">Load</button>
+          </div>
+          <p class="field-help">Paste the BCAResults address printed by the Ignition deploy command.</p>
+          <p class="transaction-status" id="transaction-status" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="panel form-panel" aria-labelledby="form-title">
+          <div class="panel-heading">
+            <div>
+              <p class="card-kicker">LECTURER ENTRY</p>
+              <h2 id="form-title">Record an internal result</h2>
+            </div>
+            <span class="panel-icon" aria-hidden="true">02</span>
+          </div>
+          <form id="result-form">
+            <div class="form-grid">
+              <label class="field">
+                <span class="field-label">STUDENT NAME</span>
+                <input class="text-input" id="student-name" name="studentName" type="text" maxlength="100" required />
+              </label>
+              <label class="field">
+                <span class="field-label">USN NUMBER</span>
+                <input class="text-input" id="usn" name="usn" type="text" maxlength="30" required />
+              </label>
+              <label class="field">
+                <span class="field-label">SUBJECT</span>
+                <input class="text-input" id="subject" name="subject" type="text" maxlength="100" required />
+              </label>
+              <label class="field">
+                <span class="field-label">SEMESTER</span>
+                <select class="text-input" id="semester" name="semester" required>
+                  <option value="" disabled selected>Select semester</option>
+                  <option value="1">Semester 1</option>
+                  <option value="2">Semester 2</option>
+                  <option value="3">Semester 3</option>
+                  <option value="4">Semester 4</option>
+                  <option value="5">Semester 5</option>
+                  <option value="6">Semester 6</option>
+                </select>
+              </label>
+              <label class="field">
+                <span class="field-label">TEST</span>
+                <input class="text-input" id="test-name" name="testName" type="text" maxlength="100" placeholder="e.g. Internal Test 1" required />
+              </label>
+              <label class="field">
+                <span class="field-label">MARKS</span>
+                <input class="text-input" id="marks" name="marks" type="number" min="0" step="1" placeholder="0" required />
+              </label>
+            </div>
+            <button class="primary-button submit-button" id="submit-button" type="submit" disabled>
+              <span id="submit-label">Save result to blockchain</span>
+              <span aria-hidden="true">↗</span>
+            </button>
+            <p class="field-help">Only the wallet that deployed this register can submit results. Corrections are added as new entries.</p>
+          </form>
+        </section>
+      </section>
+
+      <section class="panel results-panel" aria-labelledby="results-title">
+        <div class="results-heading">
+          <div>
+            <p class="card-kicker">ON-CHAIN REGISTER</p>
+            <h2 id="results-title">Recorded results <span class="count-badge" id="result-count">0</span></h2>
+          </div>
+          <button class="secondary-button" id="refresh-button" type="button">Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>USN</th>
+                <th>Subject</th>
+                <th>Semester</th>
+                <th>Test</th>
+                <th>Marks</th>
+                <th>Submitted by</th>
+              </tr>
+            </thead>
+            <tbody id="results-body">
+              <tr><td class="empty-state" colspan="7">Connect your wallet and load the deployed register to view results.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pagination">
+          <span id="page-label">No results loaded</span>
+          <div class="pagination-actions">
+            <button class="secondary-button" id="previous-page" type="button" disabled>Previous</button>
+            <button class="secondary-button" id="next-page" type="button" disabled>Next</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>Powered by <strong>Hardhat · Solidity</strong></span>
+        <span class="footer-build">BCA INTERNAL TEST REGISTER</span>
+      </footer>
+    </main>
+  </body>
+</html>

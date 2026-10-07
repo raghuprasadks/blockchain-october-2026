@@ -1,0 +1,49 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_34-57e6f4903882a89ef59b22efce053454564f3664",
+  "solcVersion": "0.8.34",
+  "solcLongVersion": "0.8.34+commit.80d5c536",
+  "compilerType": "solc",
+  "toolVersions": {
+    "hardhat": "3.18.1"
+  },
+  "userSourceNameMap": {
+    "contracts/BCAResults.sol": "project/contracts/BCAResults.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "osaka",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode.linkReferences",
+            "evm.bytecode.object",
+            "evm.bytecode.opcodes",
+            "evm.bytecode.sourceMap",
+            "evm.deployedBytecode.immutableReferences",
+            "evm.deployedBytecode.linkReferences",
+            "evm.deployedBytecode.object",
+            "evm.deployedBytecode.opcodes",
+            "evm.deployedBytecode.sourceMap",
+            "evm.methodIdentifiers"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/BCAResults.sol": {
+        "content": "// SPDX-License-Identifier: UNLICENSED\r\npragma solidity ^0.8.34;\r\n\r\ncontract BCAResults {\r\n  struct InternalTestResult {\r\n    string studentName;\r\n    string usn;\r\n    string subject;\r\n    uint8 semester;\r\n    string testName;\r\n    uint256 marks;\r\n    address recordedBy;\r\n    uint256 recordedAt;\r\n  }\r\n\r\n  address public immutable owner;\r\n  InternalTestResult[] private results;\r\n\r\n  event ResultRecorded(\r\n    uint256 indexed resultId,\r\n    string studentName,\r\n    string usn,\r\n    string subject,\r\n    uint8 semester,\r\n    string testName,\r\n    uint256 marks,\r\n    address recordedBy\r\n  );\r\n\r\n  constructor() {\r\n    owner = msg.sender;\r\n  }\r\n\r\n  modifier onlyLecturer() {\r\n    require(msg.sender == owner, \"Only the lecturer can record results.\");\r\n    _;\r\n  }\r\n\r\n  function recordResult(\r\n    string calldata studentName,\r\n    string calldata usn,\r\n    string calldata subject,\r\n    uint8 semester,\r\n    string calldata testName,\r\n    uint256 marks\r\n  ) external onlyLecturer {\r\n    require(bytes(studentName).length > 0, \"Student name is required.\");\r\n    require(bytes(usn).length > 0, \"USN is required.\");\r\n    require(bytes(subject).length > 0, \"Subject is required.\");\r\n    require(bytes(testName).length > 0, \"Test name is required.\");\r\n    require(semester >= 1 && semester <= 6, \"Semester must be between 1 and 6.\");\r\n\r\n    uint256 resultId = results.length;\r\n    results.push(\r\n      InternalTestResult({\r\n        studentName: studentName,\r\n        usn: usn,\r\n        subject: subject,\r\n        semester: semester,\r\n        testName: testName,\r\n        marks: marks,\r\n        recordedBy: msg.sender,\r\n        recordedAt: block.timestamp\r\n      })\r\n    );\r\n\r\n    emit ResultRecorded(\r\n      resultId,\r\n      studentName,\r\n      usn,\r\n      subject,\r\n      semester,\r\n      testName,\r\n      marks,\r\n      msg.sender\r\n    );\r\n  }\r\n\r\n  function resultCount() external view returns (uint256) {\r\n    return results.length;\r\n  }\r\n\r\n  function getResult(\r\n    uint256 index\r\n  )\r\n    external\r\n    view\r\n    returns (\r\n      string memory studentName,\r\n      string memory usn,\r\n      string memory subject,\r\n      uint8 semester,\r\n      string memory testName,\r\n      uint256 marks,\r\n      address recordedBy,\r\n      uint256 recordedAt\r\n    )\r\n  {\r\n    require(index < results.length, \"Result does not exist.\");\r\n    InternalTestResult storage result = results[index];\r\n    return (\r\n      result.studentName,\r\n      result.usn,\r\n      result.subject,\r\n      result.semester,\r\n      result.testName,\r\n      result.marks,\r\n      result.recordedBy,\r\n      result.recordedAt\r\n    );\r\n  }\r\n}\r\n"
+      }
+    }
+  }
+}

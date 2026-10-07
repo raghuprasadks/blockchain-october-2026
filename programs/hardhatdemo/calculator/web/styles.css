@@ -1,0 +1,607 @@
+:root {
+  color-scheme: light;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #22251f;
+  background: #f5f4f0;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --muted: #777970;
+  --line: #e8e7e1;
+  --green: #416b45;
+  --green-dark: #315536;
+  --mono: Consolas, "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 8% 38%, rgba(226, 226, 210, 0.45), transparent 33rem),
+    #f5f4f0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(65, 107, 69, 0.35);
+  outline-offset: 3px;
+}
+
+.app-shell {
+  width: min(100% - 48px, 1040px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 30px 0 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar,
+.brand,
+.network-pill,
+.card-top,
+.action-row,
+.connection-row,
+.account-info,
+.section-heading,
+.footer {
+  display: flex;
+  align-items: center;
+}
+
+.topbar {
+  justify-content: space-between;
+}
+
+.brand {
+  gap: 10px;
+  color: #24271f;
+  text-decoration: none;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.brand-mark {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 9px;
+  background: #416b45;
+  color: white;
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.brand-dot {
+  color: #78946d;
+}
+
+.network-pill {
+  min-height: 34px;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid #e7e7df;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.5);
+  color: #686c63;
+  font-size: 12px;
+}
+
+.network-light {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #b4b6ad;
+}
+
+.hero {
+  max-width: 660px;
+  margin: 82px auto 34px;
+  text-align: center;
+}
+
+.eyebrow,
+.card-label,
+.account-label,
+.section-index,
+.footer {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 20px;
+  color: var(--green);
+  font-size: 10px;
+}
+
+.eyebrow-line {
+  width: 19px;
+  height: 1px;
+  background: #729272;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: clamp(58px, 9vw, 92px);
+  font-weight: 600;
+  line-height: 0.97;
+  letter-spacing: -0.08em;
+}
+
+h1 span {
+  color: var(--green);
+}
+
+.intro {
+  max-width: 415px;
+  margin: 20px auto 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.counter-card {
+  width: min(100%, 580px);
+  margin: 0 auto;
+  padding: 28px 30px 21px;
+  border: 1px solid rgba(226, 225, 217, 0.9);
+  border-radius: 17px;
+  background: #fffefa;
+  box-shadow: 0 12px 40px rgba(55, 58, 47, 0.055);
+}
+
+.card-top {
+  justify-content: space-between;
+}
+
+.card-label,
+.account-label {
+  margin: 0;
+  color: #85877e;
+  font-size: 9px;
+  letter-spacing: 0.11em;
+}
+
+.counter-value {
+  max-width: 490px;
+  margin: 8px 0 0;
+  overflow-wrap: anywhere;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: clamp(48px, 9vw, 76px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.07em;
+}
+
+.icon-button {
+  display: grid;
+  width: 39px;
+  height: 39px;
+  padding: 10px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #fffefa;
+  color: #6c7167;
+  cursor: pointer;
+}
+
+.icon-button:hover:not(:disabled) {
+  background: #f4f5ef;
+  color: var(--green);
+}
+
+.icon-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.icon-button svg,
+.account-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.action-row {
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.button {
+  min-height: 45px;
+  padding: 0 17px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.button-primary {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: var(--green);
+  color: white;
+}
+
+.button-primary:hover:not(:disabled) {
+  background: var(--green-dark);
+}
+
+.button-symbol {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 0.7;
+}
+
+.custom-increment {
+  display: flex;
+  gap: 7px;
+}
+
+.custom-increment input {
+  width: 105px;
+  min-width: 0;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: white;
+  color: #272a24;
+  font-size: 12px;
+}
+
+.custom-increment input::placeholder {
+  color: #a0a197;
+}
+
+.button-secondary,
+.button-connect {
+  border-color: #e5e6dd;
+  background: #f7f8f3;
+  color: #39483a;
+}
+
+.button-secondary:hover:not(:disabled),
+.button-connect:hover:not(:disabled) {
+  border-color: #d0d8ca;
+  background: #eef1e9;
+}
+
+.card-divider {
+  height: 1px;
+  margin: 23px -30px 19px;
+  background: #eeede7;
+}
+
+.connection-row {
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.account-info {
+  min-width: 0;
+  gap: 11px;
+}
+
+.account-icon {
+  display: grid;
+  width: 35px;
+  height: 35px;
+  padding: 8px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 10px;
+  background: #f0f1ea;
+  color: #52684e;
+}
+
+.account-address {
+  max-width: 220px;
+  margin: 5px 0 0;
+  overflow: hidden;
+  color: #363930;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.button-connect {
+  min-height: 37px;
+  padding: 0 13px;
+  white-space: nowrap;
+}
+
+.contract-panel {
+  width: min(100%, 580px);
+  margin: 30px auto 0;
+}
+
+.section-heading {
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.section-index {
+  display: grid;
+  width: 29px;
+  height: 29px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #e5e5db;
+  border-radius: 9px;
+  color: #777970;
+  font-size: 9px;
+}
+
+.section-heading h2 {
+  margin: 1px 0 4px;
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.section-heading p,
+.field-help {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.address-field {
+  display: flex;
+  height: 43px;
+  align-items: center;
+  gap: 9px;
+  margin: 15px 0 6px 42px;
+  padding: 0 12px;
+  border: 1px solid #e4e3dc;
+  border-radius: 9px;
+  background: rgba(255, 254, 250, 0.85);
+}
+
+.address-field:focus-within {
+  border-color: #96ad91;
+  box-shadow: 0 0 0 3px rgba(65, 107, 69, 0.08);
+}
+
+.address-prefix {
+  color: #a4a59c;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.address-field input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #45483f;
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+.address-field input:focus-visible {
+  outline: 0;
+}
+
+.address-field input::placeholder {
+  color: #a5a69e;
+}
+
+.field-help {
+  margin-left: 42px;
+  font-size: 10px;
+}
+
+.status-message {
+  width: min(100%, 580px);
+  min-height: 20px;
+  margin: 18px auto 0;
+  color: #74776d;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.status-message.error {
+  color: #a23f35;
+}
+
+.status-message.success {
+  color: #3e7145;
+}
+
+.footer {
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 38px;
+  color: #9b9c93;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 600px) {
+  .app-shell {
+    width: min(100% - 32px, 480px);
+    padding-top: 20px;
+  }
+
+  .hero {
+    margin-top: 67px;
+  }
+
+  .intro {
+    max-width: 330px;
+    font-size: 13px;
+  }
+
+  .counter-card {
+    padding: 23px 19px 18px;
+  }
+
+  .action-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .custom-increment {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  .custom-increment input {
+    width: 100%;
+    min-height: 43px;
+  }
+
+  .card-divider {
+    margin-right: -19px;
+    margin-left: -19px;
+  }
+
+  .address-field {
+    margin-left: 0;
+  }
+
+  .field-help {
+    margin-left: 0;
+  }
+
+  .footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
+}
+
+.calculator-title {
+  margin: 8px 0 0;
+  font-size: 18px;
+  font-weight: 650;
+}
+
+.operand-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr);
+  align-items: end;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.operand-row label {
+  display: grid;
+  gap: 8px;
+}
+
+.operand-row input {
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: white;
+  color: #272a24;
+  font-family: var(--mono);
+  font-size: 14px;
+}
+
+.operand-row input::placeholder {
+  color: #a0a197;
+}
+
+.operand-separator {
+  padding-bottom: 13px;
+  color: #8b8d83;
+  font-size: 18px;
+  text-align: center;
+}
+
+.math-actions .button {
+  flex: 1;
+}
+
+.math-actions .button-symbol {
+  font-size: 19px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.result-value {
+  margin: 8px 0 0;
+  overflow-wrap: anywhere;
+  color: #30352c;
+  font-family: var(--mono);
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .math-actions {
+    flex-direction: column;
+  }
+
+  .results-grid {
+    gap: 12px;
+  }
+
+  .result-item .card-label {
+    line-height: 1.5;
+  }
+}

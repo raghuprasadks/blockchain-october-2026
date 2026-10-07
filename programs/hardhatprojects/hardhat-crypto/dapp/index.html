@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Connect your wallet to view and transfer MyToken on Sepolia."
+    />
+    <title>MyToken | Sepolia</title>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="MyToken home">
+          <span class="brand-mark">M</span>
+          <span>MyToken</span>
+        </a>
+        <div class="network-badge"><span></span> Sepolia testnet</div>
+      </header>
+
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">YOUR TOKEN, YOUR WALLET</p>
+        <h1 id="page-title">MyToken wallet</h1>
+        <p class="intro">
+          View your MTK balance and send tokens on the Sepolia test network.
+        </p>
+      </section>
+
+      <section class="wallet-card" aria-label="Token wallet">
+        <div class="card-heading">
+          <div>
+            <p class="eyebrow">TOKEN BALANCE</p>
+            <p id="balance" class="balance">-- <span>MTK</span></p>
+          </div>
+          <div class="token-icon" aria-hidden="true">M</div>
+        </div>
+        <div class="account-row">
+          <div>
+            <p class="field-label">Connected account</p>
+            <p id="account" class="account-value">Not connected</p>
+          </div>
+          <button id="connect-button" class="button button-primary" type="button">
+            Connect MetaMask
+          </button>
+        </div>
+        <div class="card-footer">
+          <a
+            id="token-link"
+            href="https://sepolia.etherscan.io/address/0xb879B9678BfaD2F8226b5a0B4231944C935e3235"
+            target="_blank"
+            rel="noreferrer"
+          >View token on Etherscan ↗</a>
+          <button id="refresh-button" class="text-button" type="button" disabled>
+            Refresh balance
+          </button>
+        </div>
+      </section>
+
+      <section class="transfer-card" aria-labelledby="transfer-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">SEND TOKENS</p>
+            <h2 id="transfer-title">Transfer MTK</h2>
+          </div>
+          <span class="transfer-icon" aria-hidden="true">↗</span>
+        </div>
+        <form id="transfer-form">
+          <label for="recipient">Recipient address</label>
+          <input
+            id="recipient"
+            name="recipient"
+            type="text"
+            placeholder="0x..."
+            autocomplete="off"
+            spellcheck="false"
+            required
+          />
+          <label for="amount">Amount</label>
+          <div class="amount-input">
+            <input
+              id="amount"
+              name="amount"
+              type="number"
+              min="0"
+              step="any"
+              placeholder="0.00"
+              required
+            />
+            <span>MTK</span>
+          </div>
+          <button id="send-button" class="button button-primary send-button" type="submit" disabled>
+            Connect wallet to send
+          </button>
+        </form>
+        <p class="notice">Transactions require Sepolia ETH for network gas fees.</p>
+      </section>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <footer class="page-footer">
+        <span>MyToken · Sepolia testnet</span>
+        <span>Never share your wallet recovery phrase or private key.</span>
+      </footer>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

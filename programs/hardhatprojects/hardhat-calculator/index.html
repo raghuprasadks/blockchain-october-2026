@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A browser dApp for the MathsCalculator smart contract."
+    />
+    <title>MathsCalculator dApp</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="MathsCalculator home">
+          <span class="brand-mark" aria-hidden="true">∑</span>
+          <span>Maths<span class="brand-muted">Calculator</span></span>
+        </a>
+        <button class="button button-wallet" id="connect-wallet" type="button">
+          Connect wallet
+        </button>
+      </header>
+
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow"><span class="status-dot"></span> ON-CHAIN CALCULATOR</p>
+        <h1 id="page-title">Math, with a little <span> blockchain.</span></h1>
+        <p class="hero-copy">
+          Call the MathsCalculator contract directly from your browser. Results
+          are read from the connected network; no transaction is sent.
+        </p>
+      </section>
+
+      <section class="calculator-card" aria-label="Smart contract calculator">
+        <div class="card-heading">
+          <div>
+            <p class="eyebrow">CONTRACT SETUP</p>
+            <h2>Connect to your calculator</h2>
+          </div>
+          <span class="network-pill" id="network-id">Wallet not connected</span>
+        </div>
+
+        <label class="field-label" for="contract-address">Contract address</label>
+        <input
+          class="text-input"
+          id="contract-address"
+          type="text"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="0x..."
+          aria-describedby="address-help"
+        />
+        <p class="field-help" id="address-help">
+          Paste the deployed MathsCalculator address for the network selected in
+          your wallet.
+        </p>
+
+        <div class="divider"></div>
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">YOUR INPUT</p>
+            <h2>Choose an operation</h2>
+          </div>
+          <span class="unit-label">uint256</span>
+        </div>
+
+        <div class="inputs-grid">
+          <label class="operand-field">
+            <span class="field-label">First number</span>
+            <input
+              class="text-input operand-input"
+              id="operand-a"
+              type="text"
+              inputmode="numeric"
+              autocomplete="off"
+              value="12"
+              aria-label="First number"
+            />
+          </label>
+          <div class="input-operator" aria-hidden="true">+</div>
+          <label class="operand-field">
+            <span class="field-label">Second number</span>
+            <input
+              class="text-input operand-input"
+              id="operand-b"
+              type="text"
+              inputmode="numeric"
+              autocomplete="off"
+              value="3"
+              aria-label="Second number"
+            />
+          </label>
+        </div>
+
+        <div class="operations" aria-label="Calculator operations">
+          <button class="operation-button" type="button" data-operation="add">
+            <span>＋</span> Add
+          </button>
+          <button class="operation-button" type="button" data-operation="subtract">
+            <span>−</span> Subtract
+          </button>
+          <button class="operation-button" type="button" data-operation="multiply">
+            <span>×</span> Multiply
+          </button>
+          <button class="operation-button" type="button" data-operation="divide">
+            <span>÷</span> Divide
+          </button>
+        </div>
+
+        <section class="result-panel" aria-live="polite" aria-atomic="true">
+          <div>
+            <p class="eyebrow" id="result-label">RESULT</p>
+            <p class="result-value" id="result">—</p>
+          </div>
+          <span class="result-mark" aria-hidden="true">=</span>
+        </section>
+        <p class="message" id="message" role="status">
+          Connect your wallet and enter a deployed contract address to begin.
+        </p>
+      </section>
+
+      <footer>
+        <span>Powered by your connected EVM wallet</span>
+        <span class="footer-separator" aria-hidden="true">·</span>
+        <span>Read-only calls · No gas required</span>
+      </footer>
+    </main>
+  </body>
+</html>

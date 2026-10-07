@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f4f0" />
+    <title>SimpleMath · On-chain calculator</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="SimpleMath home">
+          <span class="brand-mark" aria-hidden="true">±</span>
+          <span>simplemath<span class="brand-dot">.</span></span>
+        </a>
+        <div class="network-pill">
+          <span class="network-light" aria-hidden="true"></span>
+          <span id="network-name">Wallet not connected</span>
+        </div>
+      </header>
+
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow"><span class="eyebrow-line"></span> Arithmetic, on-chain</p>
+        <h1 id="page-title">Math that<br /><span>makes a mark.</span></h1>
+        <p class="intro">
+          Add or multiply two whole numbers. Each answer is saved to the
+          calculator contract on your selected blockchain.
+        </p>
+      </section>
+
+      <section class="counter-card calculator-card" aria-labelledby="calculator-title">
+        <div class="card-top">
+          <div>
+            <p class="card-label">CALCULATOR</p>
+            <h2 id="calculator-title" class="calculator-title">Choose an operation</h2>
+          </div>
+          <button class="icon-button" id="refresh-button" type="button" aria-label="Refresh saved results" title="Refresh saved results" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 7v5h-5M4 17v-5h5" />
+              <path d="M5.6 9A7 7 0 0 1 18 6l2 6M4 12l2 6a7 7 0 0 0 12.4-3" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="operand-row">
+          <label>
+            <span class="card-label">FIRST NUMBER</span>
+            <input id="first-number" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 12" aria-label="First whole number" />
+          </label>
+          <span class="operand-separator" aria-hidden="true">+</span>
+          <label>
+            <span class="card-label">SECOND NUMBER</span>
+            <input id="second-number" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 8" aria-label="Second whole number" />
+          </label>
+        </div>
+
+        <div class="action-row math-actions">
+          <button class="button button-primary" id="add-button" type="button" disabled>
+            <span class="button-symbol" aria-hidden="true">+</span>
+            Add numbers
+          </button>
+          <button class="button button-secondary" id="multiply-button" type="button" disabled>
+            <span class="button-symbol" aria-hidden="true">×</span>
+            Multiply
+          </button>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="results-grid" aria-live="polite">
+          <div class="result-item">
+            <p class="card-label">LAST ADDITION</p>
+            <p class="result-value" id="add-result">—</p>
+          </div>
+          <div class="result-item">
+            <p class="card-label">LAST MULTIPLICATION</p>
+            <p class="result-value" id="multiply-result">—</p>
+          </div>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="connection-row">
+          <div class="account-info">
+            <span class="account-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="3.25" />
+                <path d="M5.5 20c.5-3.5 2.7-5.5 6.5-5.5s6 2 6.5 5.5" />
+              </svg>
+            </span>
+            <div>
+              <p class="account-label">CONNECTED ACCOUNT</p>
+              <p class="account-address" id="account-address">Not connected</p>
+            </div>
+          </div>
+          <button class="button button-connect" id="connect-button" type="button">Connect wallet</button>
+        </div>
+      </section>
+
+      <section class="contract-panel" aria-labelledby="contract-heading">
+        <div class="section-heading">
+          <span class="section-index">01</span>
+          <div>
+            <h2 id="contract-heading">Calculator contract</h2>
+            <p>Paste the deployed SimpleMathCalculator address on the connected network.</p>
+          </div>
+        </div>
+        <label class="sr-only" for="contract-address">Contract address</label>
+        <div class="address-field">
+          <span class="address-prefix" aria-hidden="true">0x</span>
+          <input
+            id="contract-address"
+            type="text"
+            inputmode="text"
+            autocomplete="off"
+            spellcheck="false"
+            readonly
+            placeholder="Contract address"
+            aria-describedby="address-help"
+          />
+        </div>
+        <p class="field-help" id="address-help">Only the verified local Hardhat deployment is enabled. Transactions require wallet confirmation.</p>
+      </section>
+
+      <div class="status-message" id="status-message" role="status" aria-live="polite">
+        Connect your wallet and enter the deployed contract address to get started.
+      </div>
+
+      <footer class="footer">
+        <span>SIMPLEMATH CONTRACT</span>
+        <span>Each calculation is a blockchain transaction.</span>
+      </footer>
+    </main>
+  </body>
+</html>

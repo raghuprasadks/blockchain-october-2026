@@ -1,0 +1,135 @@
+Agenda:
+1. Recap
+React - Java Script library
+for developing component based
+applications
+Front end library
+SPA - Single Page Application
+node.js - java script server side runtime
+asynchronous,non-blocking,single threaded
+npx create-react-app <appname>
+app.js
+npm start
+
+2. hardhat
+
+Build simpleMathCalculator Decentralized Application
+
+Step 1 - create simplemathcalculator folder
+
+Step 2 - open above folder in command prompt
+Step 3 - npm init -y
+Step 4 - npm install hardhat
+Step 5 - npx hardhat --init
+
+Create SimpleMath.sol
+This should do addition  and subtraction. 
+Result should be saved in blockchain
+
+Write a test case for SimpleMath.sol
+
+compile programs
+npx hardhat build
+
+to compile only solidity programs
+
+npx hardhat compile
+force compile
+npx hardhat compile --force
+
+Step 6 - deploy on local block chain network
+start a local block chainnetwork
+
+npx hardhat node
+
+to deploy
+
+click + button in power shell
+
+npx hardhat ignition deploy ignition/modules/SimpleMath.ts
+
+
+
+Deployed address
+
+Deployed Addresses
+
+SimpleMathModule#SimpleMath - 
+
+Step 7 - Create DApp
+
+Create Dapp for SimpleMaths.sol
+
+
+
+Step 8 : Commands for deployment
+
+start local blockchain
+
+npx hardhat node
+
+Deploy contract
+npx hardhat ignition deploy ignition/modules/SimpleMath.ts --network localhost
+
+run the UI application
+npm run dapp
+
+
+1. Create a block chain application to store BCA department internal test result. Lecturer should
+be able to enter marks for different tests conducted for each semester
+Teacher has to enter
+Student Name
+USN Number
+Subject
+Test
+Marks
+
+Deploy this with the UI. Use hardhat
+
+
+Crypto Currency, Token
+
+ERC-20 token
+
+Steps:
+1. Create tokengen folder
+2. cd tokengen
+3. npm init -y
+4. npm install hardhat
+5. npx hardhat --init
+
+I want to create token based ERC-20
+
+There is lot of fraud happening in ownership of
+a land property in any city in india.
+How can i use blockchain to overcome this.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
