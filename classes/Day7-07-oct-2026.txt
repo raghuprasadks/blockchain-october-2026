@@ -1,0 +1,25 @@
+Agenda:
+1. Review
+2. NFT (Non Fungible Token)
+3. DeFi (Decentralized Financial Application)
+4. www.kaushalya.tech
+git
+gitrepositories
+https://github.com/raghuprasadks/blockchain-october-2026
+
+git - Version control software - download into your operating system
+GitHub - Cloud
+Step1 - Create an account in GitHub.com
+Step2 - Download git
+https://git-scm.com/install/windows
+In command prompt
+git --version
+
+Step3 - Clone existing repository in GitHub
+
+create blockchaintraining folder in your system
+open command prompt
+
+git clone https://github.com/raghuprasadks/blockchain-october-2026.git
+
+
