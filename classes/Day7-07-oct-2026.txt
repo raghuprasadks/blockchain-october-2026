@@ -23,3 +23,20 @@ open command prompt
 git clone https://github.com/raghuprasadks/blockchain-october-2026.git
 
 
+Demo NFT
+Step 1 - create nftdemo folder
+Step 2 - cd nftdemo
+Step 3 - npm init -y
+Step 4 - npm install hardhat
+Step 5 - npx hardhat --init
+Step 6 - code .
+Step 7 - Type following in co-pilot prompt
+
+I want to create nft based solidity program 
+to sell digital art.Create MyDigitalArt.sol
+Step 8 - Create UI
+Create web user interface for MyDigitalArt.sol 
+
+
+
+
